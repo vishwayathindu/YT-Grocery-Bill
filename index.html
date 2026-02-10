@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YT Grocery Bill</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bill-header">
+    <h1>🛒 YT Grocery Bill</h1>
+    <p>Mobile : 0754583695 / 0778120186</p>
+    <p>48 Methotamulla Road, Wellampitiya</p>
+    <hr>
+</div>
+<div class="invoice-meta">
+    <div>
+        <strong>Date:</strong> <span id="invoiceDate"></span><br>
+        <strong>Invoice No:</strong> <span id="invoiceNo"></span>
+    </div>
+</div>
+<div class="form">
+    <input type="text" id="itemName" placeholder="Item name">
+    <input type="number" id="qty" placeholder="Qty">
+    <input type="number" id="price" placeholder="Price">
+    <button onclick="addItem()">Add Item</button>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th class="no-print">Action</th>
+        </tr>
+    </thead>    
+    <tbody id="billBody"></tbody>
+</table>
+
+<div class="summary-section">
+    <div class="words">
+        <strong>Invoice Amount In Words</strong><br>
+        <span id="amountWords"></span>
+        <br><br>
+        <strong>Terms And Conditions</strong><br>
+        Thank you for doing business with us.
+    </div>
+
+    <div class="totals">
+        <div class="row">
+            <span>Sub Total</span>
+            <span>Rs <span id="subTotal">0.00</span></span>
+        </div>
+        <div class="row highlight">
+            <span>Total</span>
+            <span>Rs <span id="finalTotal">0.00</span></span>
+        </div>
+        <div class="row no-print">
+            <span>Received</span>
+            <span>
+                Rs 
+                <input 
+                    type="number"
+                    id="receivedAmount"
+                    value="0"
+                    min="0"
+                    oninput="updateBalance()"
+                    style="width:80px;text-align:right;">
+            </span>
+        </div>
+        
+        <div class="row print-only">
+            <span>Received</span>
+            <span>Rs <span id="receivedPrint">0.00</span></span>
+        </div>
+        <div class="row border-top">
+            <span>Balance</span>
+            <span>Rs <span id="balance">0.00</span></span>
+        </div>
+        <div class="sign">
+            For: <strong>YT Grocery</strong>
+        </div>
+    </div>
+</div>
+
+<button onclick="printBill()">🖨️ Print Bill</button>
+
+
+<script src="script.js"></script>
+</body>
+</html>
